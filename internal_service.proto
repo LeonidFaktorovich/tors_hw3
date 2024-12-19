@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "internal_service/";
+
+service InternalService {
+    rpc SendEntries (EntriesRequest) returns (EntriesResponse) {}
+}
+
+message VectorTime {
+    repeated uint64 host_tp = 1;
+}
+
+message Value {
+    string data = 1;
+    VectorTime tp = 2;
+}
+
+message Entry {
+    string key = 1;
+    Value value = 2;
+}
+
+message EntriesRequest {
+    repeated Entry entries = 1;
+}
+
+message EntriesResponse {
+};

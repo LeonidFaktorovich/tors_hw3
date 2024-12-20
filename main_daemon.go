@@ -28,4 +28,6 @@ func MainDaemon() {
 	}()
 
 	GrpcServiceDaemon(int(grpc_port), state)
+
+	EnableFullReplication(state)
 }

@@ -23,11 +23,11 @@ func MainDaemon() {
 
 	state := NewState(addrs, *node_id_flag)
 
+	EnableFullReplication(state)
+
 	go func() {
 		HttpDaemon(state, *http_port_flag)
 	}()
 
 	GrpcServiceDaemon(int(grpc_port), state)
-
-	EnableFullReplication(state)
 }
